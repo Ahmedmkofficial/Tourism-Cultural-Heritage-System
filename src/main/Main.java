@@ -9,9 +9,9 @@ public class Main {
 
         TourismManager manager = new TourismManager();
 
-        // =========================
+        
         // SAMPLE DATA (TEST DATA ONLY)
-        // =========================
+        
 
         manager.addLocation(new HeritageSite(
                 "Lalibela",
@@ -62,7 +62,7 @@ public class Main {
         // SIMPLE TEST
         
 
-        System.out.println("==== ETHIOPIAN TOURISM SYSTEM ====\n");
+        System.out.println("ETHIOPIAN TOURISM SYSTEM \n");
 
         System.out.println("Available Locations:");
         manager.displayAllLocations();
