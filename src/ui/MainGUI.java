@@ -320,7 +320,7 @@ package ui;
 
 	    private void refreshComments(String locationName) {
 	        commentListModel.clear();
-	        for (Comment c : commentService.getCommentsForLocation(locationName)) {
+	        for (Comment c : commentService.getAllComments()) {
 	            commentListModel.addElement(c);
 	        }
 	    }

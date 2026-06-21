@@ -2,30 +2,51 @@ package service;
 
 import model.Comment;
 
-
-import java.util.*;
+import java.util.ArrayList;
 
 public class CommentService {
 
-    private final Map<String, List<Comment>> comments = new HashMap<>();
+    private ArrayList<Comment> comments;
 
+    public CommentService() {
+        comments = new ArrayList<>();
+    }
 
     public void addComment(String locationName,
-                           String author,
-                           String text) {
+                           String userName,
+                           String commentText) {
 
-        Comment comment = new Comment();
-
-        comments.computeIfAbsent(
-                        locationName,
-                        k -> new ArrayList<>())
-                .add(comment);
+        comments.add(
+                new Comment(locationName, userName, commentText)
+        );
     }
-    
 
-    public List<Comment> getCommentsForLocation(String locationName) {
-        return comments.getOrDefault(
-                locationName,
-                new ArrayList<>());
+    public ArrayList<Comment> getCommentsForLocation(String locationName) {
+
+        ArrayList<Comment> result = new ArrayList<>();
+
+        for (Comment comment : comments) {
+            if (comment.getLocationName().equalsIgnoreCase(locationName)) {
+                result.add(comment);
+            }
+        }
+
+        return result;
+    }
+
+    public ArrayList<Comment> getAllComments() {
+        return comments;
+    }
+
+    public void displayComments() {
+
+        if (comments.isEmpty()) {
+            System.out.println("No comments available.");
+            return;
+        }
+
+        for (Comment comment : comments) {
+            System.out.println(comment);
+        }
     }
 }
