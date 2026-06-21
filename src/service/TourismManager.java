@@ -11,23 +11,54 @@ public class TourismManager {
         locations = new ArrayList<>();
     }
 
-    // THIS METHOD MUST EXIST
+    // Add a new location
     public void addLocation(Location location) {
         locations.add(location);
     }
 
+    // Display all location names
     public void displayAllLocations() {
-        for (Location l : locations) {
-            System.out.println("- " + l.getName());
+
+        if (locations.isEmpty()) {
+            System.out.println("No tourism locations available.");
+            return;
+        }
+
+        for (Location location : locations) {
+            System.out.println("- " + location.getName());
         }
     }
 
+    // Search location by name
     public Location searchLocationByName(String name) {
-        for (Location l : locations) {
-            if (l.getName().equalsIgnoreCase(name)) {
-                return l;
+
+        for (Location location : locations) {
+
+            if (location.getName().equalsIgnoreCase(name)) {
+                return location;
             }
         }
+
         return null;
+    }
+
+    // Filter locations by category
+    public ArrayList<Location> filterByCategory(String category) {
+
+        ArrayList<Location> filteredLocations = new ArrayList<>();
+
+        for (Location location : locations) {
+
+            if (location.getCategory().equalsIgnoreCase(category)) {
+                filteredLocations.add(location);
+            }
+        }
+
+        return filteredLocations;
+    }
+
+    // Return all locations
+    public ArrayList<Location> getAllLocations() {
+        return locations;
     }
 }

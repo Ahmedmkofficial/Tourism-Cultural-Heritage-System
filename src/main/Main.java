@@ -1,6 +1,8 @@
 package main;
 
-import model.*;
+import model.HeritageSite;
+import model.NaturalSite;
+import model.Location;
 import service.TourismManager;
 
 public class Main {
@@ -9,74 +11,87 @@ public class Main {
 
         TourismManager manager = new TourismManager();
 
-        
-        // SAMPLE DATA (TEST DATA ONLY)
-        
-
+        // -------------------------
+        // HISTORICAL / CULTURAL SITES
+        // -------------------------
         manager.addLocation(new HeritageSite(
                 "Lalibela",
                 "Amhara",
-                "Rock-hewn churches carved into volcanic rock",
-                "Built in the 12th century during the Zagwe dynasty as a spiritual New Jerusalem",
-                "UNESCO World Heritage Site and major religious center",
-                "Visit early morning for ceremonies"
+                "Rock-hewn churches of Lalibela",
+                "Built in the 12th century under King Lalibela",
+                "One of Ethiopia's most important religious sites",
+                "Visit during religious festivals for best experience"
         ));
 
         manager.addLocation(new HeritageSite(
                 "Axum Obelisks",
                 "Tigray",
-                "Ancient stone obelisks and ruins of an empire",
-                "Capital of the Aksumite Empire, one of the greatest ancient civilizations in Africa",
-                "Symbol of early Ethiopian civilization and Christianity",
-                "Hire a guide for full explanation"
+                "Ancient stone obelisks",
+                "Remains of the Axumite Empire over 2000 years old",
+                "Symbol of ancient Ethiopian civilization",
+                "Visit archaeological museum nearby"
         ));
 
+        manager.addLocation(new HeritageSite(
+                "Harar Jugol",
+                "Harar",
+                "Walled historic city",
+                "Developed between 7th–16th century as trade hub",
+                "Important Islamic cultural heritage site",
+                "Walk inside the old city to explore fully"
+        ));
+
+        // -------------------------
+        // NATURAL SITES
+        // -------------------------
         manager.addLocation(new NaturalSite(
                 "Simien Mountains",
                 "Amhara",
-                "Dramatic mountain ranges and wildlife",
-                "Formed through volcanic activity and erosion over millions of years",
-                "UNESCO Natural Heritage Site with unique biodiversity",
-                "Bring warm clothes"
+                "Mountain range with dramatic landscapes",
+                "Formed by volcanic activity millions of years ago",
+                "Home to rare wildlife like Gelada baboons",
+                "Best for hiking and trekking"
         ));
 
         manager.addLocation(new NaturalSite(
                 "Sof Omar Caves",
                 "Oromia",
-                "Large underground cave system with river passages",
-                "Carved by the Web River over thousands of years",
-                "One of Africa’s most extensive cave systems",
-                "Visit with a guide for safety"
+                "Huge limestone cave system",
+                "Formed by Weyib River over thousands of years",
+                "One of Africa's largest cave systems",
+                "Bring guide for safe exploration"
         ));
 
-        manager.addLocation(new CulturalSite(
-                "Harar Jugol",
-                "Harar",
-                "Walled historic city with unique Islamic architecture",
-                "Developed between 7th–16th century as a trading and religious hub",
-                "Important cultural heritage center in Ethiopia",
-                "Explore on foot to experience the old city"
-        ));
+        // -------------------------
+        // OUTPUT SECTION
+        // -------------------------
 
-        
-        // SIMPLE TEST
-        
+        System.out.println("====================================");
+        System.out.println(" ETHIOPIAN TOURISM SYSTEM");
+        System.out.println("====================================");
 
-        System.out.println("ETHIOPIAN TOURISM SYSTEM \n");
-
-        System.out.println("Available Locations:");
+        System.out.println("\nALL LOCATIONS:");
         manager.displayAllLocations();
 
-        System.out.println("\nSearch Example (type name exactly):");
-
-        String searchName = "Harar Jugol"; // you can later replace with Scanner input
-
-        Location result = manager.searchLocationByName(searchName);
+        System.out.println("\nSEARCH TEST (Lalibela):");
+        Location result = manager.searchLocationByName("Lalibela");
 
         if (result != null) {
-            result.displayInfo();
+            System.out.println(result);
         } else {
             System.out.println("Location not found.");
         }
+
+        System.out.println("\nNATURAL SITES:");
+        for (Location l : manager.filterByCategory("Natural")) {
+            System.out.println("- " + l.getName());
+        }
+
+        System.out.println("\nHISTORICAL SITES:");
+        for (Location l : manager.filterByCategory("Historical")) {
+            System.out.println("- " + l.getName());
+        }
+
+        System.out.println("\nSYSTEM RUN SUCCESSFUL");
     }
 }
