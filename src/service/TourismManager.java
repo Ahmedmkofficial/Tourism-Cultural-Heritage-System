@@ -61,4 +61,19 @@ public class TourismManager {
     public ArrayList<Location> getAllLocations() {
         return locations;
     }
+    
+
+
+public boolean deleteLocationByName(String name) {
+
+    for (int i = 0; i < locations.size(); i++) {
+
+        if (locations.get(i).getName().equalsIgnoreCase(name)) {
+            locations.remove(i);
+            return true;
+        }
+    }
+
+    return false;
+}
 }
