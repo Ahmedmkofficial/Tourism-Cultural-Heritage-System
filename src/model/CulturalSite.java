@@ -17,4 +17,7 @@ public class CulturalSite extends Location {
               significance,
               touristTips);
     }
+ @Override
+    public String getCategory() {
+        return "Cultural";
 }
