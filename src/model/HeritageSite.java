@@ -17,4 +17,7 @@ public class HeritageSite extends Location {
               significance,
               touristTips);
     }
+    @Override
+    public String getCategory() {
+        return "Historical";
 }
