@@ -17,4 +17,7 @@ public class NaturalSite extends Location {
               significance,
               touristTips);
     }
+    @Override
+    public String getCategory() {
+        return "Natural";
 }
