@@ -67,4 +67,7 @@ public class Location {
         System.out.println("Tourist Tips: " + touristTips);
         
     }
+    @Override
+    public String toString() {
+        return name;
 }
